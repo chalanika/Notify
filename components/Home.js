@@ -13,29 +13,50 @@ import { Block, Button } from "galio-framework";
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
+      <Image
+        source={{
+          uri:
+            "https://www.notifytechnology.com/wp-content/themes/notify/images/notify-logo.png",
+          width: 200,
+          height: 80,
+        }}
+        style={{ marginTop: 80 }}
+      />
       <View style={styles.content} style={{ flexDirection: "column" }}>
-        <View
+        {/* <View
           style={{
-            flex: 0.5,
+            flex: 3,
             alignItems: "center",
             justifyContent: "center",
-            flexDirection: "row",
           }}
         >
-          <Text style={{ fontSize: 25 }}>Welcome to </Text>
-          <Text style={{ fontSize: 30, fontWeight: "300" }}>NOTIFY !!!</Text>
-        </View>
-        <View style={{ flex: 3, marginLeft: 10, marginRight: 10 }}>
+         
+        </View> */}
+        <View
+          style={{
+            flex: 2,
+            marginLeft: 10,
+            marginRight: 10,
+            alignItems: "center",
+          }}
+        >
           <Image
             source={{
-              width: "100%",
-              height: "100%",
+              width: "80%",
+              height: "110%",
               uri:
                 "https://miro.medium.com/max/4166/1*bm6oHJKQ0IKIQSywAuJxmQ.png",
             }}
           />
         </View>
-        <View style={{ alignItems: "center", marginBottom: 20 }}>
+        <View
+          style={{
+            alignItems: "center",
+            marginBottom: 10,
+            flex: 1,
+            marginTop: 40,
+          }}
+        >
           <Button
             round
             uppercase
@@ -45,7 +66,13 @@ export default function Home({ navigation }) {
           >
             Sign Up
           </Button>
-          <Button round uppercase color="info" size="large">
+          <Button
+            round
+            uppercase
+            color="info"
+            size="large"
+            onPress={() => navigation.navigate("Signin")}
+          >
             Sign In
           </Button>
         </View>
