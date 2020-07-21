@@ -36,7 +36,13 @@ export default function Home({ navigation }) {
           />
         </View>
         <View style={{ alignItems: "center", marginBottom: 20 }}>
-          <Button round uppercase color="info" size="large">
+          <Button
+            round
+            uppercase
+            color="info"
+            size="large"
+            onPress={() => navigation.navigate("Signup")}
+          >
             Sign Up
           </Button>
           <Button round uppercase color="info" size="large">
