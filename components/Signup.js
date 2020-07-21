@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { Input, Block, Button } from "galio-framework";
 import firebase from "./firebase";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function Signup({ navigation }) {
   const [name, setName] = useState();
@@ -39,7 +40,7 @@ export default function Signup({ navigation }) {
               Name: name,
               Position: position,
             });
-            // navigation.navigate("HomeScreen");
+            navigation.navigate("Notifications");
           }
         });
     } catch (error) {
@@ -48,46 +49,57 @@ export default function Signup({ navigation }) {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
-        <Image
-          source={{
-            width: 400,
-            height: 350,
-            uri:
-              "https://img.freepik.com/free-vector/account-log-page_41910-263.jpg?size=626&ext=jpg",
-          }}
-        />
-        <Input
-          placeholder="Name"
-          rounded
-          style={{ marginLeft: 5, marginRight: 5, marginTop: 5 }}
-          onChangeText={(val) => setName(val)}
-        />
-        <Input
-          placeholder="Email"
-          rounded
-          style={{ marginLeft: 5, marginRight: 5, marginTop: 5 }}
-          onChangeText={(val) => setEmail(val)}
-        />
-        <Input
-          placeholder="Position"
-          rounded
-          style={{ marginLeft: 5, marginRight: 5, marginTop: 5 }}
-          onChangeText={(val) => setPosition(val)}
-        />
+      <ScrollView>
+        <View style={styles.content}>
+          <Image
+            source={{
+              width: 400,
+              height: 300,
+              uri:
+                "https://img.freepik.com/free-vector/account-log-page_41910-263.jpg?size=626&ext=jpg",
+            }}
+          />
 
-        <Input
-          placeholder="password"
-          password
-          viewPass
-          rounded
-          style={{ marginLeft: 5, marginRight: 5 }}
-          onChangeText={(val) => setPassword(val)}
-        />
-        <Button round uppercase color="info" onPress={() => onSignup()}>
-          Sign Up
-        </Button>
-      </View>
+          <View style={{ width: "80%" }}>
+            <Input
+              placeholder="Name"
+              rounded
+              style={{ marginLeft: 5, marginRight: 5, marginTop: 5 }}
+              onChangeText={(val) => setName(val)}
+            />
+            <Input
+              placeholder="Email"
+              rounded
+              style={{ marginLeft: 5, marginRight: 5 }}
+              onChangeText={(val) => setEmail(val)}
+            />
+            <Input
+              placeholder="Position"
+              rounded
+              style={{ marginLeft: 5, marginRight: 5 }}
+              onChangeText={(val) => setPosition(val)}
+            />
+
+            <Input
+              placeholder="password"
+              password
+              viewPass
+              rounded
+              style={{ marginLeft: 5, marginRight: 5 }}
+              onChangeText={(val) => setPassword(val)}
+            />
+          </View>
+          <Button
+            round
+            uppercase
+            color="info"
+            onPress={() => onSignup()}
+            style={{ marginBottom: 30 }}
+          >
+            Sign Up
+          </Button>
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -98,13 +110,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 
   content: {
-    width: "80%",
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    //marginTop: 80,
   },
 });
