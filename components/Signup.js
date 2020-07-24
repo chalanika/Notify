@@ -34,13 +34,13 @@ export default function Signup({ navigation }) {
               .firestore()
               .collection("users")
               .doc(userData.user.uid);
-            console.log(111, userRef);
+            //console.log(111, userRef);
             userRef.set({
               Email: userData.user.email,
               Name: name,
               Position: position,
             });
-            navigation.navigate("Notifications");
+            navigation.navigate("ViewRecentNotifications");
           }
         });
     } catch (error) {

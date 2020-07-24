@@ -24,7 +24,7 @@ export default function Signin({ navigation }) {
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then((userRef) => {
-          console.log(999, userRef);
+          //console.log(999, userRef);
         });
       navigation.navigate("ViewRecentNotifications");
     } catch (error) {
@@ -81,5 +81,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 80,
   },
 });
