@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   View,
   Text,
@@ -7,11 +7,29 @@ import {
   Platform,
   StyleSheet,
 } from "react-native";
-import { Button } from "galio-framework";
+import { Button, Input } from "galio-framework";
+import firebase from "../firebase";
 
 const AddNotifications = ({ route, navigation }) => {
   const { userId } = route.params;
-  const [value, onChangeText] = React.useState("Useless Placeholder");
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
+
+  const onAddNotice = () => {
+    console.log(8, title);
+    console.log(9, description);
+    try {
+      firebase.firestore().collection("notifications").add({
+        Title: title,
+        Description: description,
+        Date: new Date(),
+      });
+      navigation.navigate("ViewRecentNotifications");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   console.log(userId);
   return (
     <View style={styles.container}>
@@ -24,9 +42,7 @@ const AddNotifications = ({ route, navigation }) => {
             marginTop: 50,
           }}
         >
-          <Text style={{ fontSize: 40, fontWeight: "300" }}>
-            Add Notification
-          </Text>
+          <Text style={{ fontSize: 30, fontWeight: "300" }}>Add Notice</Text>
         </View>
         <View
           style={{
@@ -36,35 +52,32 @@ const AddNotifications = ({ route, navigation }) => {
             marginTop: 30,
           }}
         >
-          <TextInput
+          <Input
+            placeholder="Title"
+            rounded
             style={{
-              height: 40,
-              borderColor: "gray",
-              borderWidth: 1,
-              borderRadius: 10,
-              padding: 5,
-              width: "70%",
-              color: "gray",
-              marginBottom: 20,
+              marginLeft: 5,
+              marginRight: 5,
+              marginTop: 5,
+              width: "80%",
             }}
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
+            onChangeText={(val) => setTitle(val)}
           />
-          <TextInput
+          <Input
+            placeholder="Description"
+            rounded
             style={{
-              height: 100,
-              borderColor: "gray",
-              borderWidth: 1,
-              borderRadius: 10,
-              padding: 5,
-              width: "70%",
-              color: "gray",
-              marginBottom: 40,
+              marginLeft: 5,
+              marginRight: 5,
+              marginTop: 5,
+              width: "80%",
             }}
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
+            onChangeText={(val) => setDescription(val)}
           />
-          <Button color="info">Submit</Button>
+
+          <Button color="info" round onPress={() => onAddNotice()}>
+            Submit
+          </Button>
         </View>
       </View>
     </View>
