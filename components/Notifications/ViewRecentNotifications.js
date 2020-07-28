@@ -15,6 +15,7 @@ import "react-native-gesture-handler";
 import { Input, Block, Button, Toast } from "galio-framework";
 import { useNavigation } from "@react-navigation/native";
 import firebase from "../firebase";
+import { Icon } from 'react-native-elements'
 
 class ViewRecentNotifications extends React.Component {
   state = {
@@ -26,6 +27,7 @@ class ViewRecentNotifications extends React.Component {
     notifications: null,
     sampleList: [{ item: "A" }, { item: "B" }, { item: "C" }],
     date: new Date(),
+    x: Number,
   };
 
   componentDidMount() {
@@ -56,8 +58,7 @@ class ViewRecentNotifications extends React.Component {
         .collection("notifications")
         .get()
         .then((snapshot) => {
-          // this.setState({ notifications: res });
-          // console.log(6666, this.state.notifications);
+
           let notifications = [];
           snapshot.forEach((doc) => {
             const data = doc.data();
@@ -73,77 +74,149 @@ class ViewRecentNotifications extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
-      <View style={styles.container}>
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 0.5 }}></View>
-          <View style={{ flex: 2, margin: 30 }}>
-            <View>
-              <Text
-                style={{
-                  backgroundColor: "lightskyblue",
-                  padding: 10,
-                  borderRadius: 5,
-                }}
-              >
-                The meeting will be on 3.00 PM Today
-                {this.state.currentUser.Name}
-              </Text>
-              <FlatList
-                data={this.state.notifications}
-                renderItem={({ item }) => (
-                  <View
-                    key={item.Title}
-                    style={{
-                      borderColor: "red",
-                      backgroundColor: "gold",
-                      borderWidth: 3,
-                      marginBottom: 3,
-                    }}
-                  >
-                    <Text>{item.Title}</Text>
-                    <Text>{item.Description}</Text>
+      <View style={{ flex: 1 }}>
+        <View style={{
+          backgroundColor: '#13a7d4',
+          borderRadius: 10,
+          margin: 10,
+          flex: 0.125
+        }}>
 
-                    <Text>
-                      {new Date(parseInt(1595521432 * 1000)).toDateString()}
-                    </Text>
-                    {/* <Text>{item.Date.toMillis().toString()}</Text> */}
-                  </View>
-                )}
-              />
-            </View>
-          </View>
+          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
+          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
+          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
+          <Icon
+  name='rowing' />
 
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "flex-end",
-              alignItems: "center",
-              marginBottom: 20,
-            }}
-          >
-            {this.state.notifications &&
-              console.log(8888, this.state.notifications)}
+<Icon
+  name='g-translate'
+  color='#00aced' />
 
-            {/* {this.state.notifications?.forEach((doc) => {
-              console.log(45454545, doc.data());
-              
-            })} */}
+<Icon
+  name='sc-telegram'
+  type='evilicon'
+  color='#517fa4'
+/>
 
-            <Button
-              round
-              uppercase
-              color="info"
-              onPress={() => {
-                navigation.navigate("AddNotifications", {
-                  userId: this.state.id,
-                });
-              }}
-            >
-              + ADD
-            </Button>
-          </View>
+<Icon
+  reverse
+  name='ios-american-football'
+  type='ionicon'
+  color='#517fa4'
+/>
+
+<Icon
+  raised
+  name='heartbeat'
+  type='font-awesome'
+  color='#f50'
+  onPress={() => console.log('hello')} />
+        </View>
+        <View style={{
+          backgroundColor: '#13a7d4',
+          borderRadius: 10,
+          margin: 10,
+          flex: 0.125
+        }}>
+
+          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
+          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
+          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
+
+        </View>
+        <View style={{
+          backgroundColor: '#13a7d4',
+          borderRadius: 10,
+          margin: 10,
+          flex: 0.125
+        }}>
+
+          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
+          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
+          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
+
+        </View>
+        <View style={{
+          backgroundColor: '#13a7d4',
+          borderRadius: 10,
+          margin: 10,
+          flex: 0.125
+        }}>
+
+          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
+          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
+          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
+
         </View>
       </View>
+
+
+      // <View style={styles.container}>
+      //   <View style={{ flex: 1 }}>
+
+      //     <View style={{ flex: 3, margin: 3 }}>
+
+      //       <View>
+      //         {/* <Text
+      //           style={{
+      //             backgroundColor: "lightskyblue",
+      //             padding: 10,
+      //             borderRadius: 10,
+      //           }}
+      //         >
+
+      //         </Text> */}
+      //         <FlatList
+      //           data={this.state.notifications}
+      //           renderItem={({ item }) => (
+      //             <View
+      //               key={item.Title}
+      //               style={{
+      //                 borderColor: "red",
+      //                 backgroundColor: "gold",
+      //                 borderWidth: 3,
+      //                 marginBottom: 3,
+      //               }}
+      //             >
+
+      //               <Text>{item.Title}</Text>
+      //               <Text>{item.Description}</Text>
+      //               <Text>{item.Date.seconds}</Text>
+
+
+
+      //               <Text>{new Date(parseInt(item.Date.seconds * 1000)).toDateString()}</Text>
+      //             </View>
+      //           )}
+      //         />
+      //       </View>
+      //     </View>
+
+      //     <View
+      //       style={{
+      //         flex: 1,
+      //         justifyContent: "flex-end",
+      //         alignItems: "center",
+      //         marginBottom: 20,
+      //       }}
+      //     >
+
+      //       <Button
+      //         round
+      //         uppercase
+      //         color="info"
+      //         onPress={() => {
+      //           navigation.navigate("AddNotifications", {
+      //             userId: this.state.id,
+      //           });
+      //         }}
+      //       >
+      //         + ADD
+      //       </Button>
+      //     </View>
+      //   </View>
+      // </View>
+
     );
   }
 }
