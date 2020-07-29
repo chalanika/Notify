@@ -16,6 +16,8 @@ import { Input, Block, Button, Toast } from "galio-framework";
 import { useNavigation } from "@react-navigation/native";
 import firebase from "../firebase";
 import { Icon } from 'react-native-elements'
+import { Divider } from 'react-native-elements';
+
 
 class ViewRecentNotifications extends React.Component {
   state = {
@@ -28,6 +30,9 @@ class ViewRecentNotifications extends React.Component {
     sampleList: [{ item: "A" }, { item: "B" }, { item: "C" }],
     date: new Date(),
     x: Number,
+    t: '23:58:14',
+    d: '12 jul 2020',
+    months : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   };
 
   componentDidMount() {
@@ -74,148 +79,76 @@ class ViewRecentNotifications extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
-      <View style={{ flex: 1 }}>
-        <View style={{
-          backgroundColor: '#13a7d4',
-          borderRadius: 10,
-          margin: 10,
-          flex: 0.125
-        }}>
 
-          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
-          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
-          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
-          <Icon
-  name='rowing' />
 
-<Icon
-  name='g-translate'
-  color='#00aced' />
+      <View style={styles.container}>
+        <View style={{ flex: 1 }}>
 
-<Icon
-  name='sc-telegram'
-  type='evilicon'
-  color='#517fa4'
-/>
+          <View style={{ flex: 3, margin: 3 }}>
 
-<Icon
-  reverse
-  name='ios-american-football'
-  type='ionicon'
-  color='#517fa4'
-/>
+            <View>
+              {/* <Text
+                style={{
+                  backgroundColor: "lightskyblue",
+                  padding: 10,
+                  borderRadius: 10,
+                }}
+              >
 
-<Icon
-  raised
-  name='heartbeat'
-  type='font-awesome'
-  color='#f50'
-  onPress={() => console.log('hello')} />
-        </View>
-        <View style={{
-          backgroundColor: '#13a7d4',
-          borderRadius: 10,
-          margin: 10,
-          flex: 0.125
-        }}>
+              </Text> */}
+              <FlatList
+                data={this.state.notifications}
+                renderItem={({ item }) => (
+                  <View
+                    key={item.Title}
+                    style={{
+                      margin: 10,
+                      flexDirection: 'column',
+                      marginBottom: 3,
+                    }}
+                   
+                  >
+                    <View style={{flexDirection:'row'}}>
+                      <Text style={{ fontWeight: 'bold', width: '80%' }}>{item.Title} </Text>
+                      <Text style={{ fontWeight: 'bold', width: '20%' }}>{new Date(parseInt(item.Date.seconds * 1000)).getDate()}{' ' }{this.state.months[ new Date(parseInt(item.Date.seconds * 1000)).getMonth()]}</Text>
+                    </View>
+                    <View style={{flexDirection:'row'}}>
+                      <Text numberOfLines={1}  onPress={()=>console.log('pressed')} style={{ color:'gray',fontSize:12, width: '90%' }}>{item.Description}</Text>
+                      
+                    </View>
+                    {/* <Text></Text> */}
+                    <Divider style={{ backgroundColor: 'gray', marginVertical: 3 }} />
+                  </View>
+                )}
+                keyExtractor={item => item.Title}
+              />
+            </View>
+          </View>
 
-          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
-          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
-          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "flex-end",
+              alignItems: "center",
+              marginBottom: 20,
+            }}
+          >
 
-        </View>
-        <View style={{
-          backgroundColor: '#13a7d4',
-          borderRadius: 10,
-          margin: 10,
-          flex: 0.125
-        }}>
-
-          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
-          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
-          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
-
-        </View>
-        <View style={{
-          backgroundColor: '#13a7d4',
-          borderRadius: 10,
-          margin: 10,
-          flex: 0.125
-        }}>
-
-          {/* <View style={{backgroundColor:'red'}}> <Text></Text></View> */}
-          <View style={{ backgroundColor: '#13a7d4', flex: 0.35, borderTopStartRadius: 10, borderTopEndRadius: 10, padding: 5, borderColor: 'darkblue' }}><Text>{this.state.currentUser.Name}</Text></View>
-          <View style={{ backgroundColor: 'white', flex: 0.65, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 5, borderColor: '#13a7d4', borderWidth: 2, marginTop: 0 }}><Text>{this.state.currentUser.Name}</Text></View>
-
+            <Button
+              round
+              uppercase
+              color="info"
+              onPress={() => {
+                navigation.navigate("AddNotifications", {
+                  userId: this.state.id,
+                });
+              }}
+            >
+              + ADD
+            </Button>
+          </View>
         </View>
       </View>
-
-
-      // <View style={styles.container}>
-      //   <View style={{ flex: 1 }}>
-
-      //     <View style={{ flex: 3, margin: 3 }}>
-
-      //       <View>
-      //         {/* <Text
-      //           style={{
-      //             backgroundColor: "lightskyblue",
-      //             padding: 10,
-      //             borderRadius: 10,
-      //           }}
-      //         >
-
-      //         </Text> */}
-      //         <FlatList
-      //           data={this.state.notifications}
-      //           renderItem={({ item }) => (
-      //             <View
-      //               key={item.Title}
-      //               style={{
-      //                 borderColor: "red",
-      //                 backgroundColor: "gold",
-      //                 borderWidth: 3,
-      //                 marginBottom: 3,
-      //               }}
-      //             >
-
-      //               <Text>{item.Title}</Text>
-      //               <Text>{item.Description}</Text>
-      //               <Text>{item.Date.seconds}</Text>
-
-
-
-      //               <Text>{new Date(parseInt(item.Date.seconds * 1000)).toDateString()}</Text>
-      //             </View>
-      //           )}
-      //         />
-      //       </View>
-      //     </View>
-
-      //     <View
-      //       style={{
-      //         flex: 1,
-      //         justifyContent: "flex-end",
-      //         alignItems: "center",
-      //         marginBottom: 20,
-      //       }}
-      //     >
-
-      //       <Button
-      //         round
-      //         uppercase
-      //         color="info"
-      //         onPress={() => {
-      //           navigation.navigate("AddNotifications", {
-      //             userId: this.state.id,
-      //           });
-      //         }}
-      //       >
-      //         + ADD
-      //       </Button>
-      //     </View>
-      //   </View>
-      // </View>
 
     );
   }
