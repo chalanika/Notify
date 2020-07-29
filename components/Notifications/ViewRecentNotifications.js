@@ -49,21 +49,18 @@ class ViewRecentNotifications extends React.Component {
             .doc(userData?.uid)
             .get()
             .then((cred) => {
-              //console.log("kkkkkkkkkkkkkkkkk");
               if (cred) {
                 this.setState({ currentUser: cred?.data() });
                 this.setState({ id: userData?.uid });
-                //console.log(5555555555555555, this.state.currentUser);
               }
             });
         }
       });
       firebase
         .firestore()
-        .collection("notifications")
+        .collection("notifications" ).orderBy("Date", "desc")
         .get()
         .then((snapshot) => {
-
           let notifications = [];
           snapshot.forEach((doc) => {
             const data = doc.data();
@@ -87,15 +84,7 @@ class ViewRecentNotifications extends React.Component {
           <View style={{ flex: 3, margin: 3 }}>
 
             <View>
-              {/* <Text
-                style={{
-                  backgroundColor: "lightskyblue",
-                  padding: 10,
-                  borderRadius: 10,
-                }}
-              >
-
-              </Text> */}
+             
               <FlatList
                 data={this.state.notifications}
                 renderItem={({ item }) => (
@@ -110,7 +99,7 @@ class ViewRecentNotifications extends React.Component {
                   >
                     <View style={{flexDirection:'row'}}>
                       <Text style={{ fontWeight: 'bold', width: '80%' }}>{item.Title} </Text>
-                      <Text style={{ fontWeight: 'bold', width: '20%' }}>{new Date(parseInt(item.Date.seconds * 1000)).getDate()}{' ' }{this.state.months[ new Date(parseInt(item.Date.seconds * 1000)).getMonth()]}</Text>
+                      <Text style={{ fontWeight: 'bold', width: '20%' }}>{new Date(parseInt(item.Date.seconds * 1000)).getDate()}{' '}{this.state.months[ new Date(parseInt(item.Date.seconds * 1000)).getMonth()]}</Text>
                     </View>
                     <View style={{flexDirection:'row'}}>
                       <Text numberOfLines={1}  onPress={()=>console.log('pressed')} style={{ color:'gray',fontSize:12, width: '90%' }}>{item.Description}</Text>
