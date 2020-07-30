@@ -64,6 +64,7 @@ class ViewRecentNotifications extends React.Component {
           let notifications = [];
           snapshot.forEach((doc) => {
             const data = doc.data();
+            data.id = doc.id;
             notifications.push(data);
           });
           this.setState({ notifications: notifications });
@@ -94,8 +95,7 @@ class ViewRecentNotifications extends React.Component {
                       margin: 10,
                       flexDirection: 'column',
                       marginBottom: 3,
-                    }}
-                   
+                    }} 
                   >
                     <View style={{flexDirection:'row'}}>
                       <Text style={{ fontWeight: 'bold', width: '80%' }}>{item.Title} </Text>
