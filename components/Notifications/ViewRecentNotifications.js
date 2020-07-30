@@ -27,11 +27,6 @@ class ViewRecentNotifications extends React.Component {
     email: "",
     position: "",
     notifications: null,
-    sampleList: [{ item: "A" }, { item: "B" }, { item: "C" }],
-    date: new Date(),
-    x: Number,
-    t: '23:58:14',
-    d: '12 jul 2020',
     months : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   };
 
@@ -105,7 +100,6 @@ class ViewRecentNotifications extends React.Component {
                       <Text numberOfLines={1}  
                       onPress={() => {
                         navigation.navigate("DetailsNotification", {
-                          docId: item.id,
                           title:item.Title,
                           description:item.Description,
                           date:item.Date.seconds,
