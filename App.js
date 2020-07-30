@@ -10,6 +10,7 @@ import Signin from "./components/Signin";
 import { Icon } from "react-native-elements";
 import ViewRecentNotifications from "./components/Notifications/ViewRecentNotifications";
 import AddNotifications from "./components/Notifications/AddNotification";
+import DetailsNotification from "./components/Notifications/detailsNotification";
 
 const Stack = createStackNavigator();
 
@@ -56,6 +57,11 @@ export default function App() {
         <Stack.Screen
           name="AddNotifications"
           component={AddNotifications}
+          options={{ title: "" }}
+        />
+        <Stack.Screen
+          name="DetailsNotification"
+          component={DetailsNotification}
           options={{ title: "" }}
         />
       </Stack.Navigator>
