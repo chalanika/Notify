@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 40
+        marginTop: 40,
+        padding:10,
     },
 });
 
