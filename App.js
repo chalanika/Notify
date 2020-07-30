@@ -11,6 +11,7 @@ import { Icon } from "react-native-elements";
 import ViewRecentNotifications from "./components/Notifications/ViewRecentNotifications";
 import AddNotifications from "./components/Notifications/AddNotification";
 import DetailsNotification from "./components/Notifications/detailsNotification";
+import Profile from "./components/Profile";
 
 const Stack = createStackNavigator();
 
@@ -24,9 +25,14 @@ export default function App() {
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Signin" component={Signin} />
         <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{ title: "" }}
+        />
+        <Stack.Screen
           name="ViewRecentNotifications"
           component={ViewRecentNotifications}
-          options={{
+          options={({ navigation }) => ({
             title: " ",
             headerRight: () => (
               <Icon
@@ -34,7 +40,8 @@ export default function App() {
                 name="user"
                 type="font-awesome"
                 color="black"
-                onPress={() => console.log("hello")}
+                onPress={()=>navigation.navigate("Profile")}
+                
               />
             ),
             headerLeft: () => (
@@ -52,7 +59,8 @@ export default function App() {
                 }}
               />
             ),
-          }}
+          })}
+          
         />
         <Stack.Screen
           name="AddNotifications"
@@ -64,6 +72,7 @@ export default function App() {
           component={DetailsNotification}
           options={{ title: "" }}
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
