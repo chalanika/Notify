@@ -102,7 +102,16 @@ class ViewRecentNotifications extends React.Component {
                       <Text style={{ fontWeight: 'bold', width: '20%' }}>{new Date(parseInt(item.Date.seconds * 1000)).getDate()}{' '}{this.state.months[ new Date(parseInt(item.Date.seconds * 1000)).getMonth()]}</Text>
                     </View>
                     <View style={{flexDirection:'row'}}>
-                      <Text numberOfLines={1}  onPress={()=>console.log('pressed')} style={{ color:'gray',fontSize:12, width: '90%' }}>{item.Description}</Text>
+                      <Text numberOfLines={1}  
+                      onPress={() => {
+                        navigation.navigate("DetailsNotification", {
+                          docId: item.id,
+                          title:item.Title,
+                          description:item.Description,
+                          date:item.Date.seconds,
+                        });
+                      }}
+                      style={{ color:'gray',fontSize:12, width: '90%' }}>{item.Description}</Text>
                       
                     </View>
                     {/* <Text></Text> */}
