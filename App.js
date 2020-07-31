@@ -31,7 +31,7 @@ export default function App() {
           options={{ title: "Profile" }}
         />
          <Stack.Screen
-          name="Editprofile"
+          name="EditProfile"
           component={EditProfile}
           options={{ title: "Change Contact Information" }}
         />
