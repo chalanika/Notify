@@ -48,11 +48,11 @@ const AddNotifications = ({ route, navigation }) => {
             marginTop: 50,
           }}
         >
-          <Text style={{ fontSize: 30, fontWeight: "300" }}>Add Notice</Text>
+          <Text style={{ fontSize: 30,}}>Add Notice</Text>
         </View>
         <View
           style={{
-            flex: 2,
+            flex: 0.5,
             alignItems: "center",
             //justifyContent: "center",
             marginTop: 30,
@@ -102,7 +102,7 @@ const AddNotifications = ({ route, navigation }) => {
             />
           </View>
 
-          <Button color="info" round onPress={() => onAddNotice()} style={{marginBottom:30}}>
+          <Button color="info" round onPress={() => onAddNotice()} style={{marginBottom:50,marginTop:40}} >
             Publish
           </Button>
         </View>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    width: "80%",
+    width: "90%",
     flex:1,
     backgroundColor:'white',
     marginTop:30,
