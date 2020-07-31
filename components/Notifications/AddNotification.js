@@ -16,12 +16,8 @@ const AddNotifications = ({ route, navigation }) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState('Description');
 
-
-
   const onAddNotice = () => {
-    console.log(8, title);
-    console.log(9, description);
-    console.log(4, value);
+    
     try {
       firebase.firestore().collection("notifications").add({
         Title: title,
@@ -69,17 +65,7 @@ const AddNotifications = ({ route, navigation }) => {
             }}
             onChangeText={(val) => setTitle(val)}
           />
-          {/* <Input
-            placeholder="Description"
-            rounded
-            style={{
-              marginLeft: 5,
-              marginRight: 5,
-              marginTop: 5,
-              width: "80%",
-            }}
-            onChangeText={(val) => setDescription(val)}
-          /> */}
+          
           <View
             style={{
               borderRadius: 10,

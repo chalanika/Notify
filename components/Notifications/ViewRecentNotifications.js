@@ -66,6 +66,7 @@ class ViewRecentNotifications extends React.Component {
         });
     } catch (error) {
       console.log(error);
+      
     }
   }
 
