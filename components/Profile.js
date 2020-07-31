@@ -55,15 +55,28 @@ class Profile extends React.Component {
     }
   }
 
+  onSignOut(){
+    firebase.auth().signOut();  
+  }
+
+  onLeave(){
+    
+    firebase.firestore().collection('users').doc(this.state.id).delete();
+    firebase.auth().currentUser.delete();
+    
+    console.log('uuuuuuuuuuuuuuuuuu');
+  }
+
   render() {
     const { navigation } = this.props;
+    console.log(666,this.state.id);
     return (
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={{ flex: 0.2, backgroundColor: 'whitesmoke', borderRadius: 10, width: '90%', marginTop: 20, flexDirection: 'row' }}>
             <View style={{ flex: 0.3, marginRight: 20 }}>
               <Image
-              resizeMode="contain"
+                resizeMode="contain"
                 source={{
                   width: '100%',
                   height: '85%',
@@ -90,19 +103,26 @@ class Profile extends React.Component {
             </View >
           </View>
 
-          <View  style={{ flex: 0.07, padding: 5, backgroundColor: '#5dbcd2', marginTop: 40, borderRadius: 10, width: '90%', justifyContent: 'center', alignItems: 'center' }}>
-            <Text onPress={()=>{console.log('uhujijij')}} style={{ color: 'white', fontSize: 16, fontSize: 16 }}>Change Contact Information </Text>
+          <View style={{ flex: 0.07, padding: 5, backgroundColor: '#5dbcd2', marginTop: 40, borderRadius: 10, width: '90%', justifyContent: 'center', alignItems: 'center' }}>
+            <Text onPress={() => {
+              navigation.navigate('EditProfile', {
+                name: this.state.currentUser.Name,
+                position: this.state.currentUser.Position,
+                userId:this.state.id,
+
+              });
+            }} style={{ color: 'white', fontSize: 16, fontSize: 16 }}>Change Contact Information </Text>
           </View>
           <View style={{ flex: 0.07, padding: 5, backgroundColor: '#5dbcd2', marginTop: 30, borderRadius: 10, width: '90%', justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ color: 'white', fontSize: 16 }}>Leave From Workplace</Text>
+            <Text style={{ color: 'white', fontSize: 16 }} onPress={()=>this.onLeave(),navigation.navigate('Home')}>Leave From Workplace</Text>
           </View>
-          <View style={{flex:0.66, alignItems: 'center', width:'90%',justifyContent:'flex-end',marginBottom:30}}>
+          <View style={{ flex: 0.66, alignItems: 'center', width: '90%', justifyContent: 'flex-end', marginBottom: 30 }}>
             <Button
               round
               uppercase
               color="info"
-              style={{width:"100%"}}
-
+              style={{ width: "100%" }}
+              onPress={()=>{this.onSignOut(),navigation.navigate('Home')}}
             >
               Sign out
           </Button>
