@@ -42,13 +42,15 @@ const styles = StyleSheet.create({
     content: {
         width: "80%",
         backgroundColor: 'white',
+        flex:1,
         paddingLeft: 10,
         borderRadius: 10,
-        justifyContent: "center",
+        
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 40,
+        marginTop: 10,
         padding:10,
+        marginBottom:30
     },
 });
 
