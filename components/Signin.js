@@ -24,9 +24,10 @@ export default function Signin({ navigation }) {
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then((userRef) => {
-          //console.log(999, userRef);
+          //console.log(999,userRef);
+          navigation.navigate("ViewRecentNotifications");
         });
-      navigation.navigate("ViewRecentNotifications");
+     
     } catch (error) {
       console.log(error);
     }
