@@ -27,7 +27,7 @@ export default function App() {
         <Stack.Screen
           name="Profile"
           component={Profile}
-          options={{ title: "" }}
+          options={{ title: "Profile" }}
         />
         <Stack.Screen
           name="ViewRecentNotifications"
