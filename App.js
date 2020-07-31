@@ -12,6 +12,7 @@ import ViewRecentNotifications from "./components/Notifications/ViewRecentNotifi
 import AddNotifications from "./components/Notifications/AddNotification";
 import DetailsNotification from "./components/Notifications/detailsNotification";
 import Profile from "./components/Profile";
+import EditProfile from "./components/EditProfile";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,11 @@ export default function App() {
           name="Profile"
           component={Profile}
           options={{ title: "Profile" }}
+        />
+         <Stack.Screen
+          name="Editprofile"
+          component={EditProfile}
+          options={{ title: "Change Contact Information" }}
         />
         <Stack.Screen
           name="ViewRecentNotifications"
