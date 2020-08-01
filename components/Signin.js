@@ -20,6 +20,7 @@ export default function Signin({ navigation }) {
   const [error,setError] = useState();
  
   const onSignin = () => {
+    
       firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
@@ -29,10 +30,8 @@ export default function Signin({ navigation }) {
           }
         })
         .catch(error=>{
-          console.log(error.code);
-          console.log(error.message);
           error.code === 'auth/invalid-email'
-          ? setError('Please Enter Valid Email') 
+          ? setError('Email Address is invalid') 
           : error.code === 'auth/user-not-found'
           ? setError('You have been registered first')
           : error.code === 'auth/too-many-requests'
@@ -42,6 +41,8 @@ export default function Signin({ navigation }) {
           :setError('Something is wrong. Please try again later.')
         });
   };
+
+  
  
   return (
     <View style={styles.container}>
@@ -55,7 +56,7 @@ export default function Signin({ navigation }) {
                 "https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?size=338&ext=jpg",
             }}
           />
-          {error && <Text style={{color:'red',fontSize:14,margin:20,justifyContent:'center',textAlign:'center'}}>{error}</Text>}
+          {error && <Text style={{color:'red',fontSize:14,margin:10,justifyContent:'center',textAlign:'center'}}>{error}</Text>}
           <View style={{ width: "80%" }}>
             <Input
               placeholder="Email"
@@ -63,6 +64,7 @@ export default function Signin({ navigation }) {
               style={{ marginTop: 5 }}
               onChangeText={(val) => setEmail(val)}
               onFocus = {()=>setError(' ')}
+              
             />
             
             <Input
