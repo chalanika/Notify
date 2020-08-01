@@ -19,16 +19,22 @@ const AddNotifications = ({ route, navigation }) => {
   const [validDescription, setvalidDescription] = useState();
 
   const onAddNotice = () => {
-   
-    if (title != ''  && description != '') {
+
+    if (title != '' && description != '') {
       try {
         console.log('hhjhui');
         firebase.firestore().collection("notifications").add({
           Title: title,
           Description: description,
           Date: new Date(),
+        }).then(() => {
+          setTitle('');
+          setDescription('');
+          navigation.push("ViewRecentNotifications");
+          
         });
-        navigation.navigate("ViewRecentNotifications");
+        
+
       } catch (error) {
         console.log(error);
       }
@@ -39,11 +45,11 @@ const AddNotifications = ({ route, navigation }) => {
 
   };
 
-  const handleError = ()=>{
-   
+  const handleError = () => {
+
     setvalidDescription(' ');
     setvalidTitle(' ');
-    
+
   }
 
   console.log(title);
@@ -78,10 +84,11 @@ const AddNotifications = ({ route, navigation }) => {
                 marginRight: 5,
                 marginTop: 5,
                 width: "80%",
-                
+
               }}
+              value={title}
               onChangeText={(val) => setTitle(val)}
-             onChange={()=>handleError()}
+              onChange={() => handleError()}
             />
             {validTitle && <Text style={{ color: 'red', fontSize: 12, paddingLeft: 10 }}>{validTitle}</Text>}
             <View
@@ -101,12 +108,12 @@ const AddNotifications = ({ route, navigation }) => {
                 multiline
                 numberOfLines={3}
                 onChangeText={text => setDescription(text)}
-                
+                value={description}
                 editable
                 style={{ padding: 7, color: 'gray', paddingLeft: 9 }}
-                onChange={()=>handleError()}
+                onChange={() => handleError()}
               />
-              
+
             </View>
             {validDescription && <Text style={{ color: 'red', fontSize: 12, paddingLeft: 10 }}>{validDescription}</Text>}
             <Button color="info" round onPress={() => onAddNotice()} style={{ marginBottom: 50, marginTop: 40 }} >
