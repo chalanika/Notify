@@ -57,13 +57,14 @@ class Profile extends React.Component {
 
   onSignOut(){
     firebase.auth().signOut();  
+    this.props.navigation.navigate('Home');
   }
 
   onLeave(){
     
     firebase.firestore().collection('users').doc(this.state.id).delete();
     firebase.auth().currentUser.delete();
-    
+    this.props.navigation.navigate('Home');
     console.log('uuuuuuuuuuuuuuuuuu');
   }
 
@@ -114,7 +115,7 @@ class Profile extends React.Component {
             }} style={{ color: 'white', fontSize: 16, fontSize: 16 }}>Change Contact Information </Text>
           </View>
           <View style={{ flex: 0.07, padding: 5, backgroundColor: '#5dbcd2', marginTop: 30, borderRadius: 10, width: '90%', justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ color: 'white', fontSize: 16 }} onPress={()=>this.onLeave(),navigation.navigate('Home')}>Leave From Workplace</Text>
+            <Text style={{ color: 'white', fontSize: 16 }} onPress={()=>this.onLeave()}>Leave From Workplace</Text>
           </View>
           <View style={{ flex: 0.66, alignItems: 'center', width: '90%', justifyContent: 'flex-end', marginBottom: 30 }}>
             <Button
@@ -122,7 +123,7 @@ class Profile extends React.Component {
               uppercase
               color="info"
               style={{ width: "100%" }}
-              onPress={()=>{this.onSignOut(),navigation.navigate('Home')}}
+              onPress={()=>{this.onSignOut()}}
             >
               Sign out
           </Button>
