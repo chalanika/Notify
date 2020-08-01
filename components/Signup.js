@@ -24,11 +24,11 @@ export default function Signup({ navigation }) {
   const [validPassword, setvalidPassword] = useState();
 
   const onSignup = () => {
-    if (email === '') setvalidName('Name is required.')
-    if (name === '') setvalidEmail('Email is required.');
+    if (name === '') setvalidName('Name is required.')
+    if (email === '') setvalidEmail('Email is required.');
     if (position === '') setvalidPosition('Position is required.');
     if (password === '') setvalidPassword('Password is required.');
-    if (email !== '' && name !== '' && position !== '' && password !== '') {
+    if (email != '' && name != '' && position != '' && password != '') {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
