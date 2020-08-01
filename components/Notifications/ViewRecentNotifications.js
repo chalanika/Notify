@@ -115,7 +115,7 @@ class ViewRecentNotifications extends React.Component {
                     <Divider style={{ backgroundColor: 'gray', marginVertical: 3 }} />
                   </View>
                 )}
-                keyExtractor={item => item.Title}
+                keyExtractor={item => item.id}
               />
             </View>
           </View>
