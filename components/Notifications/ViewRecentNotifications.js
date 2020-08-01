@@ -27,7 +27,7 @@ class ViewRecentNotifications extends React.Component {
     email: "",
     position: "",
     notifications: null,
-    months : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   };
 
   componentDidMount() {
@@ -49,24 +49,26 @@ class ViewRecentNotifications extends React.Component {
                 this.setState({ id: userData?.uid });
               }
             });
+
+          firebase
+            .firestore()
+            .collection("notifications").orderBy("Date", "desc")
+            .get()
+            .then((snapshot) => {
+              let notifications = [];
+              snapshot.forEach((doc) => {
+                const data = doc.data();
+                data.id = doc.id;
+                notifications.push(data);
+              });
+              this.setState({ notifications: notifications });
+            });
         }
       });
-      firebase
-        .firestore()
-        .collection("notifications" ).orderBy("Date", "desc")
-        .get()
-        .then((snapshot) => {
-          let notifications = [];
-          snapshot.forEach((doc) => {
-            const data = doc.data();
-            data.id = doc.id;
-            notifications.push(data);
-          });
-          this.setState({ notifications: notifications });
-        });
+
     } catch (error) {
       console.log(error);
-      
+
     }
   }
 
@@ -81,7 +83,7 @@ class ViewRecentNotifications extends React.Component {
           <View style={{ flex: 3, margin: 3 }}>
 
             <View>
-             
+
               <FlatList
                 data={this.state.notifications}
                 renderItem={({ item }) => (
@@ -91,23 +93,23 @@ class ViewRecentNotifications extends React.Component {
                       margin: 10,
                       flexDirection: 'column',
                       marginBottom: 3,
-                    }} 
+                    }}
                   >
-                    <View style={{flexDirection:'row'}}>
+                    <View style={{ flexDirection: 'row' }}>
                       <Text style={{ fontWeight: 'bold', width: '80%' }}>{item.Title} </Text>
-                      <Text style={{ fontWeight: 'bold', width: '20%' }}>{new Date(parseInt(item.Date.seconds * 1000)).getDate()}{' '}{this.state.months[ new Date(parseInt(item.Date.seconds * 1000)).getMonth()]}</Text>
+                      <Text style={{ fontWeight: 'bold', width: '20%' }}>{new Date(parseInt(item.Date.seconds * 1000)).getDate()}{' '}{this.state.months[new Date(parseInt(item.Date.seconds * 1000)).getMonth()]}</Text>
                     </View>
-                    <View style={{flexDirection:'row'}}>
-                      <Text numberOfLines={1}  
-                      onPress={() => {
-                        navigation.navigate("DetailsNotification", {
-                          title:item.Title,
-                          description:item.Description,
-                          date:item.Date.seconds,
-                        });
-                      }}
-                      style={{ color:'gray',fontSize:12, width: '90%' }}>{item.Description}</Text>
-                      
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text numberOfLines={1}
+                        onPress={() => {
+                          navigation.navigate("DetailsNotification", {
+                            title: item.Title,
+                            description: item.Description,
+                            date: item.Date.seconds,
+                          });
+                        }}
+                        style={{ color: 'gray', fontSize: 12, width: '90%' }}>{item.Description}</Text>
+
                     </View>
                     {/* <Text></Text> */}
                     <Divider style={{ backgroundColor: 'gray', marginVertical: 3 }} />
