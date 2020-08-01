@@ -13,26 +13,35 @@ import { ScrollView } from "react-native";
 
 const EditProfile = ({ route, navigation }) => {
     const { name, position,userId } = route.params;
-    console.log(userId);
     const [editname, setName] = useState(name);
     const [editposition, setPosition] = useState(position);
-
+    const [validName, setvalidName] = useState();
+    const [validPosition, setvalidPosition] = useState();
 
     const editUser = () => {
-       
-        try {
-            console.log(editposition);
-            firebase.firestore().collection("users").doc(userId).update({
-                Name:editname,
-                Position:editposition,
-            });
-            navigation.navigate("Profile");
-        } catch (error) {
-            console.log(error);
+        if (editname === '') setvalidName('Name is required.')
+        if (editposition === '') setvalidPosition('Position is required.');
+        if(editposition !== '' && editname !== ''){
+            try {
+                console.log(editposition);
+                firebase.firestore().collection("users").doc(userId).update({
+                    Name:editname,
+                    Position:editposition,
+                });
+                navigation.push("Profile");
+            } catch (error) {
+                console.log(error);
+            }
         }
+        
     };
 
-
+    const handleError = ()=>{
+       
+         setvalidPosition(' ');
+         setvalidName(' ');
+        
+      }
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -67,15 +76,18 @@ const EditProfile = ({ route, navigation }) => {
                             rounded
                             style={{ marginTop: 5, width: '90%' }}
                             onChangeText={(val) => setName(val)}
+                            onFocus={() => handleError()}
                         />
-
+ {validName && <Text style={{ color: 'red', fontSize: 12, paddingLeft: 10 }}>{validName}</Text>}
                         <Input
                             
                             value={editposition}
                             rounded
                             style={{ marginLeft: 5, width: '90%' }}
                             onChangeText={(val) => setPosition(val)}
+                            onFocus={() => handleError()}
                         />
+                        {validPosition && <Text style={{ color: 'red', fontSize: 12, paddingLeft: 10 }}>{validPosition}</Text>}
                         <Button color="info" round onPress={() => editUser()} style={{ marginBottom: 50, marginTop: 40 }} >
                             Edit
                         </Button>
