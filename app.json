@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "https://www.notifytechnology.com/wp-content/themes/notify/images/notify-logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
