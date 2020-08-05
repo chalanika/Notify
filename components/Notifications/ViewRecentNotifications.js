@@ -47,6 +47,7 @@ class ViewRecentNotifications extends React.Component {
               if (cred) {
                 this.setState({ currentUser: cred?.data() });
                 this.setState({ id: userData?.uid });
+               
               }
             });
 
@@ -83,7 +84,6 @@ class ViewRecentNotifications extends React.Component {
           <View style={{ flex: 3, margin: 3 }}>
 
             <View>
-
               <FlatList
                 data={this.state.notifications}
                 renderItem={({ item }) => (
@@ -119,8 +119,8 @@ class ViewRecentNotifications extends React.Component {
               />
             </View>
           </View>
-
-          <View
+                        
+          {this.state.currentUser.Position == 'Admin' && <View
             style={{
               flex: 1,
               justifyContent: "flex-end",
@@ -141,7 +141,7 @@ class ViewRecentNotifications extends React.Component {
             >
               + ADD
             </Button>
-          </View>
+          </View>}
         </View>
       </View>
 
