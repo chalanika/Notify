@@ -17,7 +17,7 @@ const DetailsNotification = ({ route, navigation }) => {
             <View style={styles.content}>
                 <View style={{ flexDirection: 'column', width: '100%', }} >
                     <Text style={{ fontWeight: 'bold', width: '100%', fontSize: 30 }}>{title}</Text>
-                    <Text style={{ color: 'gray' ,fontSize:12}}>{new Date(parseInt(date * 1000)).toDateString()}{'   '}{new Date(parseInt(date * 1000)).toLocaleTimeString()}</Text>
+                    <Text style={{ color: 'gray' ,fontSize:12, width: '100%'}}>{new Date(parseInt(date * 1000)).toDateString()}{'   '}{new Date(parseInt(date * 1000)).toLocaleTimeString()}</Text>
                 </View>
                 <View style={{ marginTop: 20, marginRight: 20 }}>
                     <Text style={{ fontSize: 16 }}>{description}</Text>
