@@ -5,24 +5,32 @@ import {
   Text,
   View,
   Image,
-  StatusBar,
+ StatusBar,
   Platform,
 } from "react-native";
 import { Block, Button } from "galio-framework";
 
 export default function Home({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Image
-        source={{
-          uri:
-            "https://www.notifytechnology.com/wp-content/themes/notify/images/notify-logo.png",
-          width: 200,
-          height: 80,
-        }}
-        style={{ marginTop: 80 }}
-      />
+    <View style={styles.container} >
+      
+     
+      
       <View style={styles.content} style={{ flexDirection: "column" }}>
+     <View style={{alignItems:'center',justifyContent:'center',flex:1}}>
+     <Image
+      resizeMode="contain"
+        source={
+          
+          require('../assets/notify-logo.png')
+         
+        }
+        style={{ width: '100%',
+          height: '40%'}}
+      />
+      <Text style={{fontWeight:'bold',color:'gray',fontSize:16}}>M.G.C.Sewwandi - 17001633</Text>
+     </View>
+      
         {/* <View
           style={{
             flex: 3,
@@ -41,20 +49,17 @@ export default function Home({ navigation }) {
           }}
         >
           <Image
-            source={{
-              width: "80%",
-              height: "110%",
-              uri:
-                "https://miro.medium.com/max/4166/1*bm6oHJKQ0IKIQSywAuJxmQ.png",
-            }}
+            source={require('../assets/home.png')}
+            style={{width: "100%",
+            height: "110%",}}
           />
         </View>
         <View
           style={{
             alignItems: "center",
-            marginBottom: 10,
+            marginTop:30,
             flex: 1,
-            marginTop: 40,
+           
           }}
         >
           <Button
@@ -77,22 +82,27 @@ export default function Home({ navigation }) {
           </Button>
         </View>
       </View>
+  
+     
     </View>
   );
 }
-
+console.log( StatusBar.currentHeight);
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  //backgroundColor:'gold'
   },
 
   content: {
+    flex:1,
     width: "80%",
     alignItems: "center",
     justifyContent: "center",
+    
   },
 });
