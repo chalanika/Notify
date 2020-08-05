@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,6 +9,7 @@ import {
   TextInput,
   FlatList,
   ListItem,
+  YellowBox,
 
 } from "react-native";
 import "react-native-gesture-handler";
@@ -19,7 +20,7 @@ import { Icon } from 'react-native-elements'
 import { Divider } from 'react-native-elements';
 
 
-class Profile extends React.Component {
+class Profile extends Component {
   state = {
     currentUser: {},
     id: "",
@@ -69,6 +70,7 @@ class Profile extends React.Component {
   }
 
   render() {
+    YellowBox.ignoreWarnings(["Setting a timer"]);
     const { navigation } = this.props;
     console.log(666,this.state.id);
     return (

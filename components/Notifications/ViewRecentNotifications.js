@@ -10,6 +10,7 @@ import {
   TextInput,
   FlatList,
   ListItem,
+  YellowBox,
 } from "react-native";
 import "react-native-gesture-handler";
 import { Input, Block, Button, Toast } from "galio-framework";
@@ -74,10 +75,9 @@ class ViewRecentNotifications extends React.Component {
   }
 
   render() {
+    YellowBox.ignoreWarnings(["Setting a timer"]);
     const { navigation } = this.props;
     return (
-
-
       <View style={styles.container}>
         <View style={{ flex: 1 }}>
 

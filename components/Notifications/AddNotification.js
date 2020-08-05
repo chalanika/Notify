@@ -6,12 +6,14 @@ import {
   StatusBar,
   Platform,
   StyleSheet,
+  YellowBox,
 } from "react-native";
 import { Button, Input } from "galio-framework";
 import firebase from "../firebase";
 import { ScrollView } from "react-native";
 
 const AddNotifications = ({ route, navigation }) => {
+  YellowBox.ignoreWarnings(["Setting a timer"]);
   const { userId } = route.params;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');

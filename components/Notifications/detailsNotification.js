@@ -6,11 +6,13 @@ import {
     StatusBar,
     Platform,
     StyleSheet,
-    Image
+    Image,
+    YellowBox
 } from "react-native";
 import { Button, Input } from "galio-framework";
 
 const DetailsNotification = ({ route, navigation }) => {
+    YellowBox.ignoreWarnings(["Setting a timer"]);
     const { title, description, date } = route.params;
     return (
         <View style={styles.container}>

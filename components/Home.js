@@ -5,32 +5,33 @@ import {
   Text,
   View,
   Image,
- StatusBar,
+  StatusBar,
   Platform,
+  YellowBox,
 } from "react-native";
 import { Block, Button } from "galio-framework";
 
 export default function Home({ navigation }) {
+  YellowBox.ignoreWarnings(["Setting a timer"]);
   return (
     <View style={styles.container} >
-      
-     
-      
       <View style={styles.content} style={{ flexDirection: "column" }}>
-     <View style={{alignItems:'center',justifyContent:'center',flex:1}}>
-     <Image
-      resizeMode="contain"
-        source={
-          
-          require('../assets/notify-logo.png')
-         
-        }
-        style={{ width: '100%',
-          height: '40%'}}
-      />
-      <Text style={{fontWeight:'bold',color:'gray',fontSize:16}}>M.G.C.Sewwandi - 17001633</Text>
-     </View>
-      
+        <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+          <Image
+            resizeMode="contain"
+            source={
+
+              require('../assets/notify-logo.png')
+
+            }
+            style={{
+              width: '100%',
+              height: '40%'
+            }}
+          />
+          <Text style={{ fontWeight: 'bold', color: 'gray', fontSize: 16 }}>M.G.C.Sewwandi - 17001633</Text>
+        </View>
+
         {/* <View
           style={{
             flex: 3,
@@ -50,16 +51,18 @@ export default function Home({ navigation }) {
         >
           <Image
             source={require('../assets/home.png')}
-            style={{width: "100%",
-            height: "110%",}}
+            style={{
+              width: "100%",
+              height: "110%",
+            }}
           />
         </View>
         <View
           style={{
             alignItems: "center",
-            marginTop:30,
+            marginTop: 30,
             flex: 1,
-           
+
           }}
         >
           <Button
@@ -82,27 +85,27 @@ export default function Home({ navigation }) {
           </Button>
         </View>
       </View>
-  
-     
+
+
     </View>
   );
 }
-console.log( StatusBar.currentHeight);
+console.log(StatusBar.currentHeight);
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  //backgroundColor:'gold'
+    //backgroundColor:'gold'
   },
 
   content: {
-    flex:1,
+    flex: 1,
     width: "80%",
     alignItems: "center",
     justifyContent: "center",
-    
+
   },
 });

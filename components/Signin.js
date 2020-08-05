@@ -8,6 +8,7 @@ import {
   Alert,
   StatusBar,
   TextInput,
+  YellowBox,
 } from "react-native";
 //import {Container,Contect,Header,Form} from 'native-base';
 import { Input, Block, Button } from "galio-framework";
@@ -15,6 +16,7 @@ import firebase from "./firebase";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function Signin({ navigation }) {
+  YellowBox.ignoreWarnings(["Setting a timer"]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error,setError] = useState();

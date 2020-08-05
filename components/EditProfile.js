@@ -6,12 +6,14 @@ import {
     StatusBar,
     Platform,
     StyleSheet,
+    YellowBox,
 } from "react-native";
 import { Button, Input } from "galio-framework";
 import firebase from "./firebase";
 import { ScrollView } from "react-native";
 
 const EditProfile = ({ route, navigation }) => {
+    YellowBox.ignoreWarnings(["Setting a timer"]);
     const { name, position,userId } = route.params;
     const [editname, setName] = useState(name);
     const [editposition, setPosition] = useState(position);
