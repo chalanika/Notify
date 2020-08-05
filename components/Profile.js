@@ -74,8 +74,8 @@ class Profile extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.content}>
-          <View style={{ flex: 0.2, backgroundColor: 'whitesmoke', borderRadius: 10, width: '90%', marginTop: 20, flexDirection: 'row' }}>
-            <View style={{ flex: 0.3, marginRight: 20 }}>
+          <View style={{ flex: 0.2, backgroundColor: 'whitesmoke', borderRadius: 10, width: '95%', marginTop: 20, flexDirection: 'row' }}>
+            <View style={{ flex: 0.3 }}>
               <Image
                 resizeMode="contain"
                 source={{
@@ -84,21 +84,21 @@ class Profile extends React.Component {
                   uri:
                     "https://www.pngitem.com/pimgs/m/43-434438_admin-person-man-people-customer-user-human-transparent.png",
                 }}
-                style={{ marginTop: 10, marginLeft: 10 }}
+                style={{ marginTop: 10 }}
               />
             </View>
-            <View style={{ flex: 0.7, marginLeft: 17, alignContent: 'center', justifyContent: 'center' }}>
+            <View style={{ flex: 0.7,  alignContent: 'center', justifyContent: 'center' ,width:'80%'}}>
               <View style={{ flexDirection: "row" }} >
-                <Text style={{ fontWeight: 'bold', fontSize: 14, marginRight: 14 }}>Name </Text>
-                <Text style={{ marginBottom: 3, color: 'gray' }}>: {this.state.currentUser.Name}</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 14 ,width:'25%'}}>Name </Text>
+                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Email}</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
-                <Text numberOfLines={1} style={{ fontWeight: 'bold', fontSize: 14, marginRight: 15 }}>Email </Text>
-                <Text style={{ marginBottom: 3, color: 'gray' }}>: {this.state.currentUser.Email}</Text>
+                <Text numberOfLines={1} style={{ fontWeight: 'bold', fontSize: 14,width:'25%' }}>Email </Text>
+                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Email}</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 14, }}>Position </Text>
-                <Text style={{ marginBottom: 3, color: 'gray' }}>: {this.state.currentUser.Position}</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 14,width:'25%'}}>Position </Text>
+                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Position}</Text>
               </View>
 
             </View >
