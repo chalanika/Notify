@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "https://www.notifytechnology.com/wp-content/themes/notify/images/notify-logo.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,6 +21,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.noty.notify",
+      "versionCode": 1,
+      "icon":"./assets/unnamed.png"
     }
+
   }
 }
