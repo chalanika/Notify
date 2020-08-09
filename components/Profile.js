@@ -10,6 +10,7 @@ import {
   FlatList,
   ListItem,
   YellowBox,
+  ActivityIndicator,
 
 } from "react-native";
 import "react-native-gesture-handler";
@@ -27,6 +28,7 @@ class Profile extends Component {
     name: "",
     email: "",
     position: "",
+    spinner: true,
   };
 
   componentDidMount() {
@@ -45,7 +47,7 @@ class Profile extends Component {
             .then((cred) => {
               if (cred) {
                 this.setState({ currentUser: cred?.data() });
-                this.setState({ id: userData?.uid });
+                this.setState({ id: userData?.uid ,spinner:false});
               }
             });
         }
@@ -75,24 +77,27 @@ class Profile extends Component {
     console.log(666,this.state.id);
     return (
       <View style={styles.container}>
-        <View style={styles.content}>
+        {this.state.spinner && (
+         <ActivityIndicator size="large" color="blue"/>
+        )}
+        {!this.state.spinner && (
+          <View style={styles.content}>
           <View style={{ flex: 0.2, backgroundColor: 'whitesmoke', borderRadius: 10, width: '95%', marginTop: 20, flexDirection: 'row' }}>
             <View style={{ flex: 0.3 }}>
               <Image
                 resizeMode="contain"
-                source={{
-                  width: '100%',
-                  height: '85%',
-                  uri:
-                    "https://www.pngitem.com/pimgs/m/43-434438_admin-person-man-people-customer-user-human-transparent.png",
-                }}
-                style={{ marginTop: 10 }}
+                source={
+                  require('../assets/43-434438_admin-person-man-people-customer-user-human-transparent.png')
+                }
+                style={{ marginTop: 10,  width: '100%',
+                height: '70%',}}
               />
+             
             </View>
             <View style={{ flex: 0.7,  alignContent: 'center', justifyContent: 'center' ,width:'80%'}}>
               <View style={{ flexDirection: "row" }} >
                 <Text style={{ fontWeight: 'bold', fontSize: 14 ,width:'25%'}}>Name </Text>
-                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Email}</Text>
+                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Name}</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Text numberOfLines={1} style={{ fontWeight: 'bold', fontSize: 14,width:'25%' }}>Email </Text>
@@ -133,6 +138,7 @@ class Profile extends Component {
 
 
         </View>
+        )}
       </View>
     );
   }
