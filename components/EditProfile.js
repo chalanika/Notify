@@ -30,7 +30,7 @@ const EditProfile = ({ route, navigation }) => {
                     Name:editname,
                     Position:editposition,
                 });
-                navigation.push("Profile");
+                navigation.pop();
             } catch (error) {
                 console.log(error);
             }
