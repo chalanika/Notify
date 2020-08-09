@@ -97,15 +97,15 @@ class Profile extends Component {
             <View style={{ flex: 0.7,  alignContent: 'center', justifyContent: 'center' ,width:'80%'}}>
               <View style={{ flexDirection: "row" }} >
                 <Text style={{ fontWeight: 'bold', fontSize: 14 ,width:'25%'}}>Name </Text>
-                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Name}</Text>
+                <Text  numberOfLines={1} style={{ marginBottom: 3, color: 'gray',width:'70%' }}>: {this.state.currentUser.Name}</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
-                <Text numberOfLines={1} style={{ fontWeight: 'bold', fontSize: 14,width:'25%' }}>Email </Text>
-                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Email}</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 14,width:'25%' }}>Email </Text>
+                <Text  numberOfLines={1} style={{ marginBottom: 3, color: 'gray',width:'70%' }}>: {this.state.currentUser.Email}</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 14,width:'25%'}}>Position </Text>
-                <Text style={{ marginBottom: 3, color: 'gray',width:'80%' }}>: {this.state.currentUser.Position}</Text>
+                <Text  numberOfLines={1} style={{ marginBottom: 3, color: 'gray',width:'70%' }}>: {this.state.currentUser.Position}</Text>
               </View>
 
             </View >

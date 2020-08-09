@@ -26,6 +26,7 @@ export default function Signup({ navigation }) {
   const [validPassword, setvalidPassword] = useState();
 
   const onSignup = () => {
+    console.log('bhsbsjnjksbhdbhjd');
     if (name === '') setvalidName('Name is required.')
     if (email === '') setvalidEmail('Email is required.');
     if (position === '') setvalidPosition('Position is required.');
@@ -88,7 +89,7 @@ export default function Signup({ navigation }) {
             style={{width:400,height:250}}
           />
           </View>
-          {error && <Text style={{ color: 'red', fontSize: 14, margin: 10, justifyContent: 'center', textAlign: 'center' }}>{error}</Text>}
+          {error && <Text style={{ color: 'red', fontSize: 14, marginLeft: 10, marginRight:10,justifyContent: 'center', textAlign: 'center' }}>{error}</Text>}
           <View style={{ width: "80%" }}>
             <Input
               placeholder="Name"

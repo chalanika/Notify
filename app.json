@@ -23,7 +23,7 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.notify.notify",
+      "package": "com.NextGen.notify",
       "versionCode": 1,
       "icon":"./assets/app-icon.png"
     }
