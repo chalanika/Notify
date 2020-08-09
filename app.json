@@ -23,9 +23,9 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.noty.notify",
+      "package": "com.notify.notify",
       "versionCode": 1,
-      "icon":"./assets/unnamed.png"
+      "icon":"./assets/app-icon.png"
     }
 
   }
