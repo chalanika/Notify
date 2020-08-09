@@ -11,6 +11,7 @@ import {
   FlatList,
   ListItem,
   YellowBox,
+  ActivityIndicator,
 } from "react-native";
 import "react-native-gesture-handler";
 import { Input, Block, Button, Toast } from "galio-framework";
@@ -29,6 +30,7 @@ class ViewRecentNotifications extends React.Component {
     position: "",
     notifications: null,
     months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    spinner: true,
   };
 
   componentDidMount() {
@@ -57,13 +59,14 @@ class ViewRecentNotifications extends React.Component {
             .collection("notifications").orderBy("Date", "desc")
             .get()
             .then((snapshot) => {
+              
               let notifications = [];
               snapshot.forEach((doc) => {
                 const data = doc.data();
                 data.id = doc.id;
                 notifications.push(data);
               });
-              this.setState({ notifications: notifications });
+              this.setState({ notifications: notifications,spinner:false });
             });
         }
       });
@@ -79,10 +82,14 @@ class ViewRecentNotifications extends React.Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <View style={{ flex: 1 }}>
-
+        {this.state.spinner && (
+         <ActivityIndicator size="large" color="blue"/>
+        )}
+        {!this.state.spinner && (
+          <View style={{ flex: 1 }}>
+        
           <View style={{ flex: 3, margin: 3 }}>
-
+          
             <View>
               <FlatList
                 data={this.state.notifications}
@@ -143,6 +150,7 @@ class ViewRecentNotifications extends React.Component {
             </Button>
           </View>}
         </View>
+        )}
       </View>
 
     );
