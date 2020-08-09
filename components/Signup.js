@@ -79,14 +79,15 @@ export default function Signup({ navigation }) {
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.content}>
+          <View>
           <Image
-            source={{
-              width: 400,
-              height: 300,
-              uri:
-                "https://img.freepik.com/free-vector/account-log-page_41910-263.jpg?size=626&ext=jpg",
-            }}
+            source={
+              require('../assets/PinClipart.com_no-cell-phone-clip_2129001.png')
+            }
+            resizeMode="contain"
+            style={{width:400,height:250}}
           />
+          </View>
           {error && <Text style={{ color: 'red', fontSize: 14, margin: 10, justifyContent: 'center', textAlign: 'center' }}>{error}</Text>}
           <View style={{ width: "80%" }}>
             <Input

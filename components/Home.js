@@ -20,9 +20,7 @@ export default function Home({ navigation }) {
           <Image
             resizeMode="contain"
             source={
-
               require('../assets/notify-logo.png')
-
             }
             style={{
               width: '100%',

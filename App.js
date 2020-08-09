@@ -57,10 +57,7 @@ export default function App() {
             ),
             headerLeft: () => (
               <Image
-                source={{
-                  uri:
-                    "https://www.notifytechnology.com/wp-content/themes/notify/images/notify-logo.png",
-                }}
+                source={require('./assets/notify-logo.png')}
                 style={{
                   width: 100,
                   height: 40,

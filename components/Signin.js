@@ -51,12 +51,11 @@ export default function Signin({ navigation }) {
       <ScrollView>
         <View style={styles.content}>
           <Image
-            source={{
-              width: 400,
-              height: 300,
-              uri:
-                "https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?size=338&ext=jpg",
-            }}
+             source={
+              require('../assets/mobile_app_development_login.png')
+            }
+            style={{ width: 400,
+              height: 250,}}
           />
           {error && <Text style={{color:'red',fontSize:14,margin:10,justifyContent:'center',textAlign:'center'}}>{error}</Text>}
           <View style={{ width: "80%" }}>
