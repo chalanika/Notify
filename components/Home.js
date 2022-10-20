@@ -27,7 +27,6 @@ export default function Home({ navigation }) {
               height: '40%'
             }}
           />
-          <Text style={{ fontWeight: 'bold', color: 'gray', fontSize: 16 }}>M.G.C.Sewwandi - 17001633</Text>
         </View>
 
         {/* <View
